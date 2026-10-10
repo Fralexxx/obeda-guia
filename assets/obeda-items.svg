@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+  <symbol id="coin" viewBox="0 0 64 64">
+    <path fill="#704315" d="M16 8h32v8h8v8h8v24h-8v8h-8v8H16v-8H8v-8H0V24h8v-8h8z"/>
+    <path fill="#e7ad35" d="M16 8h32v8h8v8h8v16h-8v8h-8v8H16v-8H8v-8H0V24h8v-8h8z"/>
+    <path fill="#ffe08a" d="M16 16h32v8h8v16h-8v8H16v-8H8V24h8z"/>
+    <path fill="#a96620" d="M24 24h16v8H24zm-8 8h8v8h-8zm24 0h8v8h-8zm-16 8h16v8H24z"/>
+    <path fill="#6e461a" d="M28 25h8v7h-8zm0 15h8v7h-8z"/>
+  </symbol>
+  <symbol id="ballot" viewBox="0 0 64 64">
+    <path fill="#463329" d="M8 25h48v8h8v24H0V33h8z"/>
+    <path fill="#aa7951" d="M8 25h48v7h8v8H0v-8h8z"/>
+    <path fill="#6c4934" d="M8 40h48v16H8z"/>
+    <path fill="#d7bc82" d="M18 0h29v8h7v20H18z"/>
+    <path fill="#f6e7ba" d="M18 0h29v8H18zm7 8h29v13H25z"/>
+    <path fill="#589d7d" d="M30 14h8v7h-8zm8-7h8v7h-8z"/>
+    <path fill="#2f251f" d="M22 35h20v5H22z"/>
+  </symbol>
+  <symbol id="market" viewBox="0 0 64 64">
+    <path fill="#211d27" d="M4 8h56v8h4v40h-4v8H4v-8H0V16h4z"/>
+    <path fill="#5b416a" d="M4 8h56v8H4zm0 40h56v8H4z"/>
+    <path fill="#362b45" d="M8 16h48v32H8z"/>
+    <path fill="#9268ac" d="M16 20h32v4H16zm-4 8h40v4H12zm4 8h32v4H16z"/>
+    <path fill="#aa7e31" d="M27 28h10v15H27z"/>
+    <path fill="#f2d37a" d="M27 28h10v5H27z"/>
+  </symbol>
+  <symbol id="shulker" viewBox="0 0 64 64">
+    <path fill="#382943" d="M4 13h56v10h4v30h-4v7H4v-7H0V23h4z"/>
+    <path fill="#a777bd" d="M4 13h56v10H4zm0 23h56v18H4z"/>
+    <path fill="#76528c" d="M8 23h48v13H8zm0 13h48v6H8z"/>
+    <path fill="#c8a3d7" d="M12 16h40v4H12zm0 22h40v4H12z"/>
+    <path fill="#251b31" d="M25 23h14v6H25z"/>
+    <path fill="#e7d4ed" d="M29 30h6v6h-6z"/>
+  </symbol>
+  <symbol id="pet" viewBox="0 0 64 64">
+    <path fill="#6d553b" d="M8 8h16v8h16V8h16v24h8v20h-8v8H8v-8H0V32h8z"/>
+    <path fill="#d5af75" d="M8 8h16v16h16V8h16v24h8v16h-8v8H8v-8H0V32h8z"/>
+    <path fill="#f3d2a0" d="M8 8h8v16H8zm40 0h8v16h-8zM8 32h48v16H8z"/>
+    <path fill="#352a27" d="M16 29h8v8h-8zm24 0h8v8h-8z"/>
+    <path fill="#965f59" d="M28 40h8v8h-8z"/>
+  </symbol>
+  <symbol id="spark" viewBox="0 0 64 64">
+    <path fill="#5e8199" d="M27 0h10v21h11v9H37v22H27V30H16v-9h11z"/>
+    <path fill="#b7eaff" d="M29 4h6v21h11v4H35v21h-6V29H18v-4h11z"/>
+    <path fill="#f4f9d4" d="M31 15h2v21h-2zM24 26h16v2H24z"/>
+    <path fill="#b7eaff" d="M3 45h5v-7h4v7h5v4h-5v7H8v-7H3zm45-33h4V5h4v7h5v4h-5v7h-4v-7h-4z"/>
+  </symbol>
+  <symbol id="wing" viewBox="0 0 64 64">
+    <path fill="#335a6c" d="M0 10h17v8h9v8h12v-8h9v-8h17v22h-8v9h-8v8H36v8h-8v-8H16v-8H8v-9H0z"/>
+    <path fill="#c3eff2" d="M0 10h17v8h9v8h12v-8h9v-8h17v14h-8v8h-8v8H36v9h-8v-9H16v-8H8v-8H0z"/>
+    <path fill="#78b8ce" d="M0 24h8v8h8v8h12v9h-8v-8H8v-8H0zm56 0h8v9h-8v8H44v8h-8v-9h12v-8h8z"/>
+  </symbol>
+  <symbol id="mob" viewBox="0 0 64 64">
+    <path fill="#233626" d="M8 4h48v8h8v40h-8v8H8v-8H0V12h8z"/>
+    <path fill="#6c9f58" d="M8 4h48v8h8v36h-8v8H8v-8H0V12h8z"/>
+    <path fill="#8bbb6d" d="M8 4h16v8H8zm32 0h16v8H40zM0 12h8v20H0zm56 0h8v20h-8z"/>
+    <path fill="#1c2825" d="M12 20h12v8H12zm28 0h12v8H40zM24 33h16v7H24zm-8 7h9v12h-9zm23 0h9v12h-9z"/>
+  </symbol>
+</svg>
+
