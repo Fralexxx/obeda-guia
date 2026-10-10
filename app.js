@@ -122,6 +122,26 @@
   }));
   activate(Boolean(location.hash));
 
+  const newMayors = [
+    ["ALLAN TURBINA", "Minería", "El Motor de la Isla", "⛏", "#75c7ff", "Mineros y Minero X · +5 % de ritmo", "1 % de ahorro al construir", "Nora Engranaje", "EderCoin: 5 % menos fluctuación"],
+    ["DAMIAN CEBOLLA", "Agricultura", "El Hortelano", "🌾", "#9bd776", "Granjeros · +5 % de ritmo", "20 de dinero por ciclo", "Rosa Semilla", "Alimentadores · +3 % de ritmo"],
+    ["XAVIER SIN FUENTES", "Pesca", "El Navegante", "🎣", "#7cdde2", "Pescadores · +5 % de ritmo", "Comisión: −0,15 puntos", "Mara Anzuelo", "Recolectores · +2 % de ritmo"],
+    ["EDUARDO LA HACE RICA", "Comercio", "El Comerciante", "◈", "#f1c76f", "Vendedores · +5 % de ritmo", "Comisión: −0,2 puntos", "Elsa Cobre", "EderCoin: 5 % menos fluctuación"],
+    ["ERICK ROBA RIÑONES", "Caza", "El Cazador", "⚔", "#ed8d85", "Cazadores · +5 % de ritmo", "+4 % de daño a monstruos", "Iris Escudo", "3 % menos daño de monstruos"],
+    ["ADRIANO LA CORONA", "Bosques", "El Silvicultor", "🌳", "#8cd1a4", "Taladores · +5 % de ritmo", "1 % de ahorro al construir", "Tina Brote", "Recolectores · +2 % de ritmo"],
+    ["ALVARO PLAYA", "Logística", "El Recolector", "▣", "#79d2cd", "Recolectores · +5 % de ritmo", "3 % menos daño de monstruos", "Leo Caja", "Vendedores · +2 % de ritmo"],
+    ["ANTOR QUISPE SIN PALA", "Apoyo", "El Ingenioso", "✦", "#bea3ef", "Alimentadores · +5 % de ritmo", "+4 % de experiencia de mobs", "Paz Inventos", "Recicladores compatibles · +3 %"],
+    ["Kevin MELANCAJAS", "Reciclaje", "El Reciclador", "♻", "#d1b08a", "Recicladores compatibles · +5 %", "Impuestos: −0,1 puntos", "Mila Fragmento", "Recolectores · +2 % de ritmo"]
+  ];
+  const roster = document.querySelector(".candidate-roster");
+  if (roster) newMayors.forEach(([name, category, title, icon, color, perk, secondary, minister, ministerPerk], index) => {
+    const card = document.createElement("article");
+    card.className = "candidate-card candidate-new";
+    card.style.setProperty("--candidate", color);
+    card.innerHTML = `<div class="candidate-identity"><div><span class="candidate-category">${String(index + 5).padStart(2, "0")} · ${category.toUpperCase()}</span><h4>${name}</h4><p>${title}</p></div><div class="skin-stage candidate-item-stage"><span class="candidate-item" aria-hidden="true">${icon}</span></div></div><div class="proposal-label">Plan de gobierno</div><ul class="benefit-list"><li><b>Minions</b><span>${perk}</span></li><li><b>Para la isla</b><span>${secondary}</span></li></ul><div class="minister-profile"><span class="candidate-minister-icon" aria-hidden="true">✦</span><div><small>MINISTRO DEL GOBIERNO</small><b>${minister}</b><span>${ministerPerk}</span></div></div>`;
+    roster.append(card);
+  });
+
   // Si el servicio de modelos 3D falla, muestra la cara de la textura real
   // configurada en candidatos.yml para que la ficha nunca quede vacía.
   document.querySelectorAll(".skin-render[data-skin-hash]").forEach(image => {

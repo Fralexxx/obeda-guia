@@ -845,6 +845,10 @@ code { border-color:#303a47; border-radius:6px; background:#171d25; color:#d6dfa
 .roster-note b { color:#c4e1c0; }
 .roster-note p { color:#adbaae; }
 .skin-credit { color:#8793a1; }
+.candidate-new .candidate-identity { min-height:120px; }
+.candidate-item-stage { display:flex; align-items:center; justify-content:center; }
+.candidate-item { position:relative; z-index:1; font-size:53px; line-height:1; filter:drop-shadow(4px 5px 0 #080c13); }
+.candidate-minister-icon { display:grid; place-items:center; flex:0 0 40px; width:40px; height:40px; border:1px solid #3b4651; border-radius:8px; background:#202b34; color:var(--candidate); font-size:24px; }
 .coin-banner { gap:16px; padding:17px 18px; border-color:#594a2e; border-radius:12px; background:#201c14; }
 .coin-banner small,.balance-pill small { color:#c4ac70; }
 .coin-image { width:52px; height:52px; flex-basis:52px; }
@@ -914,4 +918,3 @@ code { border-color:#303a47; border-radius:6px; background:#171d25; color:#d6dfa
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
 }
-
