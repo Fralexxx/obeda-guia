@@ -847,6 +847,7 @@ code { border-color:#303a47; border-radius:6px; background:#171d25; color:#d6dfa
 .skin-credit { color:#8793a1; }
 .candidate-new .candidate-identity { min-height:120px; }
 .candidate-item-stage { display:flex; align-items:center; justify-content:center; }
+.candidate-new .candidate-item-stage .skin-render { width:98px; height:100px; object-fit:contain; filter:drop-shadow(0 8px 10px #080c13); }
 .candidate-item { position:relative; z-index:1; font-size:53px; line-height:1; filter:drop-shadow(4px 5px 0 #080c13); }
 .candidate-minister-icon { display:grid; place-items:center; flex:0 0 40px; width:40px; height:40px; border:1px solid #3b4651; border-radius:8px; background:#202b34; color:var(--candidate); font-size:24px; }
 .coin-banner { gap:16px; padding:17px 18px; border-color:#594a2e; border-radius:12px; background:#201c14; }
