@@ -1,4 +1,23 @@
 (() => {
+  const season = document.createElement("button");
+  season.type = "button";
+  season.className = "season-toggle";
+  const october = new Date().getMonth() === 9;
+  const savedSeason = sessionStorage.getItem("obeda-season");
+  const showHalloween = savedSeason === "halloween" || (savedSeason !== "normal" && october);
+  const setSeason = active => {
+    document.documentElement.dataset.season = active ? "halloween" : "normal";
+    season.textContent = active ? "☾ Halloween" : "☾ Ver Halloween";
+    season.setAttribute("aria-pressed", String(active));
+  };
+  setSeason(showHalloween);
+  season.addEventListener("click", () => {
+    const active = document.documentElement.dataset.season !== "halloween";
+    sessionStorage.setItem("obeda-season", active ? "halloween" : "normal");
+    setSeason(active);
+  });
+  document.querySelector(".top-actions")?.prepend(season);
+
   const toast = document.getElementById("toast");
   let toastTimer;
   const announce = message => {
@@ -124,12 +143,12 @@
 
   const newMayors = [
     ["Allan Turbina", "Minería", "El Motor de la Isla", "288c71de4cbd0b09606a5ff9db1805a769003ab2639e4478a9c6aea9d12dc7d6", "#75c7ff", "Mineros y Minero X · +5 % de ritmo", "1 % de ahorro al construir", "Nora Engranaje", "EderCoin: 5 % menos fluctuación", "782fe211ea4e6cb0503025ac94f0f99d42ff97fcb5009004081db3aa0bbf9076", "Minería"],
-    ["Damian Cebolla", "Agricultura", "El Hortelano", "68c986799bafe7184a8ae233db6d9ab8e9b844fa9d4da68fa3dc94ac8fe820", "#9bd776", "Granjeros · +5 % de ritmo", "20 de dinero por ciclo", "Rosa Semilla", "Alimentadores · +3 % de ritmo", "fea30b2b041d3471c7d02e5dd14276831c9f48fd78a1f3f0c13676c5306a51ac", "Agricultura"],
+    ["Damián Cebolla", "Agricultura", "El Hortelano", "68c986799bafe7184a8ae233db6d9ab8e9b844fa9d4da68fa3dc94ac8fe820", "#9bd776", "Granjeros · +5 % de ritmo", "20 de dinero por ciclo", "Rosa Semilla", "Alimentadores · +3 % de ritmo", "fea30b2b041d3471c7d02e5dd14276831c9f48fd78a1f3f0c13676c5306a51ac", "Agricultura"],
     ["Xavier Sin Fuentes", "Pesca", "El Navegante", "6acacef5f04bed42e8a808ccec39889e666fb1299e99a9e09060f8cf29e6baf6", "#7cdde2", "Pescadores · +5 % de ritmo", "Comisión: −0,15 puntos", "Mara Anzuelo", "Recolectores · +2 % de ritmo", "419e0397d35510f73864310daca966036518ef7e4e20fd3c2e3185840e4141cf", "Pesca"],
     ["Eduardo La Hace Rica", "Comercio", "El Comerciante", "56fa4ebe785d49514f751cfc6bf3efa418939642575ed60ecc6b212a72643b8", "#f1c76f", "Vendedores · +5 % de ritmo", "Comisión: −0,2 puntos", "Elsa Cobre", "EderCoin: 5 % menos fluctuación", "2b22704f661666f6ff7b8c0ad8dba0cd783485f13df884785d47f127a025c89d", ""],
     ["Erick Roba Riñones", "Caza", "El Cazador", "8e8097b931ceea98ce1b5bad485d756959b374a5ef674236d14ec43186125d", "#ed8d85", "Cazadores · +5 % de ritmo", "+4 % de daño a monstruos", "Iris Escudo", "3 % menos daño de monstruos", "49198eb5e65007deceec1ef57270d2ca5eba151fe52fd9a4aa78410d1b3b53fa", ""],
-    ["Adriano La Corona", "Bosques", "El Silvicultor", "195170eb7c5f34dd3a9ee375e7da5061c70be95ba8370e6456a2259db98aaaf2", "#8cd1a4", "Taladores · +5 % de ritmo", "1 % de ahorro al construir", "Tina Brote", "Recolectores · +2 % de ritmo", "63c143640079253eff861872b6c5580c755eda6bdc3ff74a9846d0ce790c7b2e", "Tala"],
-    ["Alvaro Playa", "Logística", "El Recolector", "69a600ab0a83097065b95ae284f8059961774609adb3dbd3a4ca269d44409551", "#79d2cd", "Recolectores · +5 % de ritmo", "3 % menos daño de monstruos", "Leo Caja", "Vendedores · +2 % de ritmo", "72a1d9654d81f86bdb13db2d8dcc90baaa049ace52d2b6e27f719d2f93217c10", ""],
+    ["Adriano La Corona", "Bosques", "El Silvicultor", "85d175c1c9a86559900a61d690e2f354b8d13f9f144a4ce858cf0cf93a78ae12", "#8cd1a4", "Taladores · +5 % de ritmo", "1 % de ahorro al construir", "Tina Brote", "Recolectores · +2 % de ritmo", "63c143640079253eff861872b6c5580c755eda6bdc3ff74a9846d0ce790c7b2e", "Tala"],
+    ["Álvaro Playa", "Logística", "El Recolector", "69a600ab0a83097065b95ae284f8059961774609adb3dbd3a4ca269d44409551", "#79d2cd", "Recolectores · +5 % de ritmo", "3 % menos daño de monstruos", "Leo Caja", "Vendedores · +2 % de ritmo", "72a1d9654d81f86bdb13db2d8dcc90baaa049ace52d2b6e27f719d2f93217c10", ""],
     ["Antor Quispe Sin Pala", "Apoyo", "El Ingenioso", "d5e2f615828afcb0e72480477d7a9b6d8bc8029f5a4e955b3d02c0ab7e9e9056", "#bea3ef", "Alimentadores · +5 % de ritmo", "+4 % de experiencia de mobs", "Paz Inventos", "Recicladores compatibles · +3 %", "2bc8f6eef08f1093c9c5a23c455752c52f2cd6e45bf26bc536e8981cdf53", ""],
     ["Kevin Melancajas", "Reciclaje", "El Reciclador", "187fcccae4c56b1969e6dcfdd7a9921667ffb3c25968cd187e0d7ba45bae37fb", "#d1b08a", "Recicladores compatibles · +5 %", "Impuestos: −0,1 puntos", "Mila Fragmento", "Recolectores · +2 % de ritmo", "3d487a79a0117338feaddbd2f2ac4e896643f9bd9612ad865a84d41ed8f9f0", ""]
   ];
@@ -138,9 +157,24 @@
     const card = document.createElement("article");
     card.className = "candidate-card candidate-new";
     card.style.setProperty("--candidate", color);
-    const petLine = petCategory ? `<li><b>EderusPets</b><span>Hasta +2 % a las estadísticas de mascotas de ${petCategory.toLowerCase()}.</span></li>` : "";
-    card.innerHTML = `<div class="candidate-identity"><div><span class="candidate-category">${String(index + 5).padStart(2, "0")} · ${category.toUpperCase()}</span><h4>${name}</h4><p>${title}</p></div><div class="skin-stage candidate-item-stage"><span class="skin-pedestal"></span><img class="skin-render" data-render-type="head" data-skin-hash="${skin}" alt="Cabeza 3D de ${name}"></div></div><div class="proposal-label">Plan de gobierno</div><ul class="benefit-list"><li><b>Minions</b><span>${perk}</span></li><li><b>Para la isla</b><span>${secondary}</span></li>${petLine}</ul><div class="minister-profile"><img class="skin-render minister-skin" data-render-type="head" data-skin-hash="${ministerSkin}" alt="Cabeza 3D de ${minister}"><div><small>MINISTRO DEL GOBIERNO</small><b>${minister}</b><span>${ministerPerk}</span></div></div>`;
+    const petLine = petCategory
+      ? `Todas las mascotas +1,3 %; las de ${petCategory.toLowerCase()} llegan a +3,3 % de estadísticas.`
+      : "Todas las mascotas +1,3 % de estadísticas.";
+    card.innerHTML = `<div class="candidate-identity"><div><span class="candidate-category">${String(index + 5).padStart(2, "0")} · ${category.toUpperCase()}</span><h4>${name}</h4><p>${title}</p></div><div class="skin-stage candidate-item-stage"><span class="skin-pedestal"></span><img class="skin-render" data-render-type="body" data-skin-hash="${skin}" alt="Modelo 3D de cuerpo completo de ${name}" loading="lazy"></div></div><div class="proposal-label">Plan de gobierno</div><ul class="benefit-list"><li><b>Minions</b><span>${perk}</span></li><li><b>Para la isla</b><span>${secondary}</span></li><li><b>EderusPets</b><span>${petLine}</span></li></ul><div class="minister-profile"><img class="skin-render minister-skin" data-render-type="head" data-skin-hash="${ministerSkin}" alt="Cabeza 3D de ${minister}" loading="lazy"><div><small>MINISTRO DEL GOBIERNO</small><b>${minister}</b><span>${ministerPerk}</span></div></div>`;
     roster.append(card);
+  });
+  if (roster) roster.querySelectorAll(".candidate-card:not(.candidate-new)").forEach(card => {
+    const name = card.querySelector("h4")?.textContent?.trim();
+    const effect = name === "Beatriz"
+      ? "Todas las mascotas +1,3 %; las de tala +2,5 % de estadísticas."
+      : "Todas las mascotas +1,3 % de estadísticas.";
+    const list = card.querySelector(".benefit-list");
+    let line = [...(list?.children || [])].find(item => item.querySelector("b")?.textContent === "EderusPets");
+    if (!line) {
+      line = document.createElement("li");
+      list?.append(line);
+    }
+    line.innerHTML = `<b>EderusPets</b><span>${effect}</span>`;
   });
 
   // Si el servicio de modelos 3D falla, muestra la cara de la textura real
@@ -148,7 +182,9 @@
   document.querySelectorAll(".skin-render[data-skin-hash]").forEach(image => {
     const hash = image.dataset.skinHash;
     const requestedType = image.dataset.renderType || "body";
-    const render = type => `https://skinrender.dev/render/steve/${type}?skin=${encodeURIComponent(hash)}&size=${type === "body" ? 192 : 128}&yaw=35&pitch=18`;
+    const render = type => hash.length === 64
+      ? `https://skinrender.dev/render/texture:${encodeURIComponent(hash)}/${type}?size=${type === "body" ? 256 : 128}&yaw=35&pitch=12`
+      : `https://mc-heads.net/${type === "body" ? "body" : "head"}/${encodeURIComponent(hash)}/${type === "body" ? 128 : 64}`;
     const fallback = document.createElement("span");
     fallback.className = "skin-fallback";
     fallback.setAttribute("role", "img");

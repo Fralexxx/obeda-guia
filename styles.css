@@ -919,3 +919,50 @@ code { border-color:#303a47; border-radius:6px; background:#171d25; color:#d6dfa
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
 }
+
+/* Edición de octubre: misma guía, con acentos de Halloween. */
+.season-toggle { border:1px solid #3a3545; border-radius:8px; background:#1b1a25; color:#d6c6df; padding:7px 11px; font-size:11px; font-weight:700; cursor:pointer; }
+.season-toggle:hover { border-color:#a974ab; color:#fff; }
+.season-ribbon,.halloween-lantern { display:none; }
+.candidate-new .candidate-item-stage .skin-render { height:126px; width:94px; object-fit:contain; image-rendering:auto; }
+.candidate-new .candidate-item-stage .skin-fallback { top:25px; }
+
+html[data-season="halloween"] {
+  --page:#0e0b14; --paper:#17131e; --ink:#f8f0e7; --body:#d6cbd6;
+  --muted:#a99bad; --line:#3b3044; --green:#efa55e; --green-soft:#2b1d20;
+  --blue:#c5a2ee; --blue-soft:#261c35; --gold:#ffc976; --gold-soft:#33261b;
+  --accent:#f4a45d; --shadow:0 18px 50px #0008;
+}
+html[data-season="halloween"] body { color:var(--body); background:radial-gradient(circle at 82% 0%,#2d1b37 0,#0e0b14 40%) fixed; }
+html[data-season="halloween"] .top { border-bottom-color:#433047; background:#15111df2; }
+html[data-season="halloween"] .shell { border-color:#32273c; background:#15111b; }
+html[data-season="halloween"] .brand-icon { border-color:#ad673a; background:#3c2526; color:#ffc27d; }
+html[data-season="halloween"] .brand small { color:#c2aeb9; }
+html[data-season="halloween"] .season-toggle { border-color:#8e574b; background:#38232d; color:#ffd19b; }
+html[data-season="halloween"] .season-ribbon { display:inline-block; margin-left:10px; border:1px solid #a86945; border-radius:4px; background:#402519; color:#ffc486; padding:2px 6px; font:700 9px/1.2 Inter,"Segoe UI",sans-serif; vertical-align:middle; }
+html[data-season="halloween"] .halloween-lantern { display:block; position:absolute; z-index:1; width:57px; height:57px; right:15px; top:13px; image-rendering:pixelated; filter:drop-shadow(0 7px 8px #0009); transform:rotate(7deg); }
+html[data-season="halloween"] .cover-items { border-color:#66445a; background-color:#241a2e; background-image:linear-gradient(#6f4c6a22 1px,transparent 1px),linear-gradient(90deg,#6f4c6a22 1px,transparent 1px); }
+html[data-season="halloween"] .cover-copy h1 span,html[data-season="halloween"] .eyebrow,html[data-season="halloween"] .section-number { color:#ffb978; }
+html[data-season="halloween"] .chapter-nav { border-color:#493446; background:#15111bf2; }
+html[data-season="halloween"] .chapter[aria-selected="true"] { border-color:#aa694b; background:#38232a; color:#ffd6a6; box-shadow:inset 0 -2px #f6a25b; }
+html[data-season="halloween"] .chapter:hover { border-color:#865a68; background:#251b2b; }
+html[data-season="halloween"] .section-head { border-color:#433344; }
+html[data-season="halloween"] .section-head h2,html[data-season="halloween"] .chapter-content h3 { color:#f6ece8; }
+html[data-season="halloween"] .feature-card,html[data-season="halloween"] .candidate-card,html[data-season="halloween"] .steps>div,html[data-season="halloween"] .shop-item,html[data-season="halloween"] .reward-card,html[data-season="halloween"] .side-stat,html[data-season="halloween"] .admin-grid>div { border-color:#473549; background:#201923; }
+html[data-season="halloween"] .candidate-card { border-left-color:var(--candidate); }
+html[data-season="halloween"] .skin-stage { border-color:#62435b; background:linear-gradient(145deg,#30223d,#1b1724); }
+html[data-season="halloween"] .benefit-list li { border-color:#473447; border-left-color:var(--candidate); background:#1b1520; }
+html[data-season="halloween"] .minister-profile { border-color:#493447; }
+html[data-season="halloween"] .minister-skin { background:#302339; }
+html[data-season="halloween"] .callout,html[data-season="halloween"] .note,html[data-season="halloween"] .technical-detail { border-color:#5a4050; background:#261b29; }
+html[data-season="halloween"] .coin-banner { border-color:#9d683c; background:#302118; }
+html[data-season="halloween"] .exchange-panel { border-color:#665039; background:#211b23; }
+html[data-season="halloween"] .exchange-chart { border-color:#8c6047; background:#17171e; box-shadow:inset 0 0 0 3px #2d2029; }
+html[data-season="halloween"] .chart-line { stroke:#f3ac6b; }
+html[data-season="halloween"] .chart-point { fill:#ffd781; stroke:#7a4947; }
+html[data-season="halloween"] .chart-shadow { stroke:#4b2d3a; }
+html[data-season="halloween"] .chart-heading { border-color:#644349; }
+html[data-season="halloween"] .next-chapter { border-color:#4e3849; }
+html[data-season="halloween"] .next-chapter a,html[data-season="halloween"] .page-footer a { color:#ffc58a; }
+html[data-season="halloween"] .toast { border-color:#9b684d; background:#38252b; color:#ffe4c6; }
+@media (max-width:620px) { .season-toggle { padding:6px 8px; font-size:10px; } html[data-season="halloween"] .halloween-lantern { right:9px; } }
