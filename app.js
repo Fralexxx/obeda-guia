@@ -1,146 +1,30 @@
 (() => {
-  const season = document.createElement("button");
-  season.type = "button";
-  season.className = "season-toggle";
-  const october = new Date().getMonth() === 9;
-  const savedSeason = sessionStorage.getItem("obeda-season");
-  const showHalloween = savedSeason === "halloween" || (savedSeason !== "normal" && october);
-  const setSeason = active => {
-    document.documentElement.dataset.season = active ? "halloween" : "normal";
-    season.textContent = active ? "☾ Halloween" : "☾ Ver Halloween";
-    season.setAttribute("aria-pressed", String(active));
-  };
-  setSeason(showHalloween);
-  season.addEventListener("click", () => {
-    const active = document.documentElement.dataset.season !== "halloween";
-    sessionStorage.setItem("obeda-season", active ? "halloween" : "normal");
-    setSeason(active);
-  });
-  document.querySelector(".top-actions")?.prepend(season);
-
-  const toast = document.getElementById("toast");
+  if (new Date().getMonth() === 9) document.documentElement.classList.add('halloween');
+  const toast = document.getElementById('toast');
   let toastTimer;
-  const announce = message => {
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
-  };
-  const copy = async value => {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch {
-      const helper = document.createElement("textarea");
-      helper.value = value;
-      helper.setAttribute("readonly", "");
-      helper.style.position = "fixed";
-      helper.style.opacity = "0";
-      document.body.append(helper);
-      helper.select();
-      document.execCommand("copy");
-      helper.remove();
+  document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
+    const value = button.dataset.copy;
+    try { await navigator.clipboard.writeText(value); }
+    catch {
+      const field = document.createElement('textarea');
+      field.value = value; document.body.append(field); field.select();
+      document.execCommand('copy'); field.remove();
     }
-    announce("Copiado: " + value);
-  };
-  document.querySelectorAll("[data-copy]").forEach(item => item.addEventListener("click", () => copy(item.dataset.copy)));
-
-  const icons = {comenzar:"ballot", alcaldia:"ballot", economia:"coin", progreso:"shulker", comandos:"spark", configuracion:"market"};
-  const icon = (name, className = "") => {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    if (className) svg.setAttribute("class", className);
-    svg.setAttribute("aria-hidden", "true");
-    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttribute("href", `assets/obeda-items.svg#${name}`);
-    svg.append(use);
-    return svg;
-  };
-  document.querySelectorAll(".panel[data-panel]").forEach(panel => panel.querySelector(".section-head")?.append(icon(icons[panel.dataset.panel], "section-art")));
-  document.querySelectorAll(".feature-icon").forEach((item, index) => {
-    item.textContent = "";
-    item.append(icon(["ballot", "coin", "shulker", "spark", "mob", "shulker", "coin"][index] || "coin"));
-  });
-  document.querySelectorAll(".reward-card").forEach(card => card.prepend(icon("shulker", "reward-item")));
-  document.querySelectorAll(".market-samples > div").forEach(card => card.prepend(icon("market", "market-item")));
-
-  // Los datos dinámicos de PlaceholderAPI pertenecen al servidor; se muestran
-  // aquí como referencia técnica sin interrumpir la lectura del jugador.
-  const government = document.querySelector(".government-card");
-  if (government) {
-    const details = document.createElement("details");
-    details.className = "technical-detail";
-    details.innerHTML = "<summary>Para scoreboards: datos dinámicos de la alcaldía</summary><p>Estos códigos se convierten en nombres y cifras cuando se usan dentro del servidor con PlaceholderAPI.</p>";
-    government.replaceWith(details);
-    details.append(government);
-  }
-  const technicalVotes = document.querySelector(".code-cards");
-  if (technicalVotes) {
-    const previousHeading = technicalVotes.previousElementSibling?.previousElementSibling;
-    const previousText = technicalVotes.previousElementSibling;
-    const details = document.createElement("details");
-    details.className = "technical-detail";
-    details.innerHTML = "<summary>Para scoreboards: votos de candidatos</summary>";
-    previousHeading?.replaceWith(details);
-    if (previousText) details.append(previousText);
-    details.append(technicalVotes);
-  }
-  const rosterTitle = document.getElementById("alcaldes");
-  if (rosterTitle) {
-    const rosterParts = [rosterTitle, rosterTitle.nextElementSibling, rosterTitle.nextElementSibling?.nextElementSibling, rosterTitle.nextElementSibling?.nextElementSibling?.nextElementSibling, rosterTitle.nextElementSibling?.nextElementSibling?.nextElementSibling?.nextElementSibling].filter(Boolean);
-    document.querySelector("#panel-alcaldia .section-head")?.after(...rosterParts);
-  }
-
-  const chapters = ["comenzar", "alcaldia", "economia", "progreso", "comandos", "configuracion"];
-  const labels = {comenzar:"Empezar", alcaldia:"Alcaldía", economia:"EderCoins y tiendas", progreso:"Recompensas", comandos:"Comandos", configuracion:"Administración"};
-  chapters.forEach((chapter, index) => {
-    const panel = document.querySelector(`[data-panel="${chapter}"]`);
-    const next = chapters[index + 1];
-    if (!panel || !next) return;
-    const foot = document.createElement("div");
-    foot.className = "next-chapter";
-    foot.innerHTML = `<span>SEGUIR LEYENDO</span><a href="#${next}">${String(index + 2).padStart(2, "0")} · ${labels[next]} <b>→</b></a>`;
-    panel.append(foot);
-  });
-  const chapterFromHash = () => {
-    const hash = decodeURIComponent(location.hash.slice(1));
-    if (!hash || hash === "inicio") return "comenzar";
-    if (hash === "alcaldes") return "alcaldia";
-    const simple = hash.replace(/^panel-/, "");
-    if (chapters.includes(simple)) return simple;
-    return document.getElementById(hash)?.closest(".panel")?.dataset.panel || "comenzar";
-  };
-  const activate = (shouldScroll = true) => {
-    const active = chapterFromHash();
-    chapters.forEach(chapter => {
-      const panel = document.querySelector(`[data-panel="${chapter}"]`);
-      const tab = document.querySelector(`[data-chapter="${chapter}"]`);
-      if (panel) panel.hidden = chapter !== active;
-      if (tab) {
-        tab.setAttribute("aria-selected", String(chapter === active));
-        tab.tabIndex = chapter === active ? 0 : -1;
-      }
-    });
-    const hash = decodeURIComponent(location.hash.slice(1));
-    if (shouldScroll) requestAnimationFrame(() => {
-      if (hash === "alcaldes") {
-        document.getElementById("alcaldes")?.scrollIntoView({block:"start", behavior:"instant"});
-      } else {
-        const content = document.getElementById("guideContent");
-        if (content) window.scrollTo({top: content.getBoundingClientRect().top + window.scrollY - 58, behavior:"instant"});
-      }
-    });
-  };
-  window.addEventListener("hashchange", () => activate());
-  document.querySelectorAll(".chapter").forEach(tab => tab.addEventListener("keydown", event => {
-    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-    event.preventDefault();
-    const current = chapters.indexOf(tab.dataset.chapter);
-    const next = (current + (event.key === "ArrowRight" ? 1 : -1) + chapters.length) % chapters.length;
-    location.hash = chapters[next];
-    document.querySelector(`[data-chapter="${chapters[next]}"]`)?.focus();
+    toast.textContent = 'Copiado: ' + value;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
   }));
-  activate(Boolean(location.hash));
-
+  const links = [...document.querySelectorAll('.side-link')];
+  const chapters = [...document.querySelectorAll('main section[id]')];
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (!visible.length) return;
+    const id = visible[0].target.id;
+    const active = id === 'primeros-pasos' ? 'inicio' : id;
+    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + active));
+  }, {rootMargin:'-18% 0px -68% 0px'});
+  chapters.forEach(chapter => observer.observe(chapter));
   const newMayors = [
     ["Allan Turbina", "Minería", "El Motor de la Isla", "288c71de4cbd0b09606a5ff9db1805a769003ab2639e4478a9c6aea9d12dc7d6", "#75c7ff", "Mineros · +5 % de ritmo", "1 % de ahorro al construir", "Nora Engranaje", "EderCoin: 5 % menos fluctuación", "782fe211ea4e6cb0503025ac94f0f99d42ff97fcb5009004081db3aa0bbf9076", "Minería", "Recolectores · +2 % de ritmo", "Vendedores · +2 % de ritmo"],
     ["Damián Cebolla", "Agricultura", "El Hortelano", "68c986799bafe7184a8ae233db6d9ab8e9b844fa9d4da68fa3dc94ac8fe820", "#9bd776", "Granjeros · +5 % de ritmo", "15 de dinero por ciclo", "Rosa Semilla", "Alimentadores · +3 % de ritmo", "fea30b2b041d3471c7d02e5dd14276831c9f48fd78a1f3f0c13676c5306a51ac", "Agricultura", "Recolectores · +2 % de ritmo", "Vendedores · +2 % de ritmo"],
@@ -210,5 +94,16 @@
     });
     image.src = render(requestedType);
   });
-})();
 
+  const search = document.getElementById('mayor-search');
+  const count = document.getElementById('mayor-count');
+  search?.addEventListener('input', () => {
+    const term = search.value.trim().toLocaleLowerCase('es');
+    let total = 0;
+    document.querySelectorAll('.candidate-card').forEach(card => {
+      card.hidden = !card.textContent.toLocaleLowerCase('es').includes(term);
+      if (!card.hidden) total++;
+    });
+    count.textContent = total + (total === 1 ? ' candidato' : ' candidatos');
+  });
+})();
