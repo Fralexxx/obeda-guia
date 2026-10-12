@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" role="img" aria-label="Isla OneBlock de Ederus">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#142b3a"/><stop offset="1" stop-color="#172323"/></linearGradient>
+    <linearGradient id="rock" x2="0" y2="1"><stop stop-color="#66706b"/><stop offset="1" stop-color="#313b42"/></linearGradient>
+    <pattern id="stars" width="92" height="71" patternUnits="userSpaceOnUse"><rect x="15" y="10" width="2" height="2" fill="#85abbe" opacity=".55"/><rect x="74" y="43" width="3" height="3" fill="#bfd7bb" opacity=".4"/></pattern>
+    <filter id="shadow"><feGaussianBlur stdDeviation="17"/></filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h560v420H0z"/><path fill="url(#stars)" d="M0 0h560v420H0z"/>
+  <circle cx="405" cy="87" r="48" fill="#b7ff51" opacity=".11" filter="url(#shadow)"/><path fill="#d3ff8d" d="M388 70h34v34h-34z"/><path fill="#e7ffa8" d="M395 77h20v20h-20z"/>
+  <g fill="#678a89" opacity=".65"><path d="M32 72h51v10H32zm12-10h57v10H44zm389 138h68v10h-68zm17-10h57v10h-57z"/></g>
+  <path fill="#0b161a" opacity=".55" d="M100 331h350v26H100z" filter="url(#shadow)"/>
+  <path fill="#7d5739" d="M102 223h356v35H102z"/><path fill="#a67b48" d="M112 223h332v13H112z"/>
+  <path fill="#456d39" d="M86 201h386v25H86z"/><path fill="#9eff58" d="M92 194h374v13H92z"/><path fill="#ccff76" d="M150 194h78v7h-78zm184 0h82v7h-82z"/>
+  <path fill="url(#rock)" d="M115 258h330l-26 28H141z"/><path fill="#46565b" d="M142 286h276l-32 28H173z"/><path fill="#35464b" d="M174 314h212l-31 30H205z"/><path fill="#27383f" d="M208 344h147l-35 30h-77z"/>
+  <g fill="#849187" opacity=".72"><path d="M155 265h36v12h-36zm66 8h51v11h-51zm134-11h44v13h-44zm-110 40h41v9h-41z"/></g>
+  <path fill="#284a38" d="M129 187h12v33h-12zm280-11h13v45h-13z"/><path fill="#6e4c34" d="M129 182h12v31h-12zm280-5h13v34h-13z"/>
+  <g fill="#4b9a48"><path d="M107 155h58v16h-58zm-12 16h82v17H95zm15-32h54v16h-54zm292 6h30v19h-30zm-16 18h67v21h-67zm10-39h47v20h-47z"/></g><g fill="#78cd56"><path d="M116 142h37v10h-37zm-11 26h52v9h-52zm299-31h26v9h-26zm-11 31h40v8h-40z"/></g>
+  <path fill="#524638" d="M224 154h112v69H224z"/><path fill="#9d7244" d="M232 149h96v70h-96z"/><path fill="#be965b" d="M232 149h96v10h-96z"/>
+  <path fill="#3e3940" d="M213 147h134l-12-17H225z"/><path fill="#65616b" d="M230 123h102l13 17H217z"/><path fill="#878a8b" d="M245 117h76l10 14h-96z"/>
+  <path fill="#34434a" d="M272 175h21v44h-21z"/><path fill="#d9b780" d="M249 174h16v19h-16zm47 0h16v19h-16z"/><path fill="#fff2ac" d="M253 178h8v11h-8zm47 0h8v11h-8z"/>
+  <path fill="#b2e446" d="M279 173h8v13h-8z"/><path fill="#a77e47" d="M260 190h7v30h-7z"/>
+  <path fill="#adcaea" d="M351 181h27v34h-27z"/><path fill="#5d9ac7" d="M351 181h27v8h-27z"/><path fill="#d2e9ff" d="M358 190h13v17h-13z"/><path fill="#5387aa" d="M353 213h24v7h-24z"/>
+  <path fill="#e0b951" d="M179 200h28v19h-28z"/><path fill="#9b7037" d="M179 199h28v7h-28z"/><path fill="#f8dc7a" d="M192 205h6v8h-6z"/>
+  <path fill="#83b5ff" d="M345 51h8v17h-8z"/><path fill="#a8d7ff" d="M339 56h20v8h-20z"/><path fill="#bdff00" d="M467 239h7v19h-7z"/><path fill="#bdff00" d="M461 245h19v7h-19z"/>
+  <g fill="#a7ff53" opacity=".85"><path d="M62 230h7v7h-7zm436-53h5v5h-5zm-11 77h7v7h-7z"/></g>
+  <path fill="#111c1d" d="M25 385h510v1H25z"/><text x="30" y="405" fill="#a9c38f" font-family="monospace" font-size="10" letter-spacing="3">UNA ISLA · MIL HISTORIAS</text>
+</svg>
