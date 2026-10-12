@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#0d1018">
   <meta name="description" content="Guía para jugar OneBlock con OBEDA: alcaldes, EderCoins, tiendas, mascotas, rankup y recompensas.">
   <title>Guía de OBEDA · Ederus OneBlock</title>
-  <link rel="stylesheet" href="styles.css?v=2.1">
-  <script src="app.js?v=2.1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2.2">
+  <script src="app.js?v=2.2" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -34,6 +34,7 @@
         <div class="intro-art" aria-hidden="true"><img class="island-art" src="assets/isla-oneblock.svg" alt=""><div class="art-tag tag-coin"><svg><use href="assets/obeda-items.svg#coin"/></svg><span>EDERCOINS</span></div><div class="art-tag tag-vote"><svg><use href="assets/obeda-items.svg#ballot"/></svg><span>ALCALDÍA</span></div></div>
       </section>
       <div class="reading-note"><span class="tiny-block"></span><p>Elige una sección del índice o sigue leyendo de arriba abajo. Los precios y beneficios pueden cambiar dentro del servidor.</p></div>
+      <nav class="quick-paths" aria-label="Elige qué quieres hacer"><a href="#alcaldes"><svg><use href="assets/obeda-items.svg#ballot"/></svg><span><b>Elegir alcalde</b><small>Propuestas y ventajas</small></span><i>↗</i></a><a href="#monedas"><svg><use href="assets/obeda-items.svg#coin"/></svg><span><b>Ganar EderCoins</b><small>Saldo, cambio y tienda</small></span><i>↗</i></a><a href="#cosmeticos"><svg><use href="assets/obeda-items.svg#pet"/></svg><span><b>Usar cosméticos</b><small>Mascotas, emotes y más</small></span><i>↗</i></a><a href="#progreso"><svg><use href="assets/obeda-items.svg#shulker"/></svg><span><b>Subir de rango</b><small>Horas y recompensas</small></span><i>↗</i></a></nav>
       <section id="primeros-pasos" class="chapter">
         <div class="chapter-label">01 / EMPEZAR</div><h2>Tu primera visita</h2><p>OBEDA reúne la alcaldía, la economía y las actividades de OneBlock. No necesitas un rango especial para conocer los menús.</p>
         <div class="step-list"><div><span>1</span><p>Escribe <code>/obeda</code> para abrir el ayuntamiento.</p></div><div><span>2</span><p>Consulta el alcalde actual y vota cuando se abra la urna.</p></div><div><span>3</span><p>Revisa tus monedas con <code>/edercoins</code> y explora <code>/coinshop</code>.</p></div><div><span>4</span><p>Abre <code>/tiempo</code> y <code>/recompensas</code> para ver tu avance.</p></div></div>
@@ -44,7 +45,7 @@
         <p class="quiet">Las ventajas están equilibradas: ningún alcalde crea EderCoins extra ni hace que una profesión domine la economía.</p>
       </section>
       <section id="alcaldes" class="chapter mayor-chapter">
-        <div class="chapter-label">LOS CANDIDATOS</div><h2>Conoce a los alcaldes</h2><p>Compara sus estilos antes de votar. Las figuras muestran los aspectos de Minecraft configurados para cada candidato.</p>
+        <div class="chapter-label">LOS CANDIDATOS</div><h2>Conoce a los alcaldes</h2><p>Busca un nombre y abre su ficha para leer las ventajas. Las figuras muestran los aspectos de Minecraft configurados para cada candidato.</p>
         <div class="roster-controls"><label for="mayor-search">Buscar alcalde</label><input id="mayor-search" type="search" placeholder="Nombre o especialidad…" autocomplete="off"><span id="mayor-count">13 candidatos</span></div>
         <div class="candidate-roster">
           <article class="candidate-card aurelio">
@@ -96,8 +97,9 @@
         <div class="command-hint"><span>COMPRAR</span><code>/coinshop</code><span>EQUIPAR</span><code>/cosmeticos</code></div>
       </section>
       <section id="progreso" class="chapter">
-        <div class="chapter-label">05 / SIGUE JUGANDO</div><h2>Rangos y recompensas</h2><p>Tu rango numérico sube con tiempo de juego activo. Cada ascenso pide horas, dinero, EderCoins y cierto nivel de isla; el menú te dice qué requisito te falta.</p>
+        <div class="chapter-label">05 / SIGUE JUGANDO</div><h2>Rangos y recompensas</h2><p>Tu rango numérico sube mientras juegas. En <code>/tiempo</code> verás exactamente qué te falta para el siguiente ascenso.</p>
         <div class="rankup-card"><div><small>TU PROGRESO</small><strong>Rango 01 <span>→</span> Rango 02</strong><p>Las horas se cuentan mientras juegas activamente. Abre el menú para ver el siguiente premio y la insignia de tu nivel.</p></div><code>/tiempo</code></div>
+        <div class="rankup-explainer"><div><span>01</span><b>Juega</b><p>Las horas activas llenan la barra de tu siguiente rango.</p></div><div><span>02</span><b>Reúne lo necesario</b><p>El menú muestra el dinero, las EderCoins y el nivel de isla que pide. Los costos se cobran al ascender.</p></div><div><span>03</span><b>Asciende</b><p>Cuando cumples todo, recibes tu insignia y premio automáticamente.</p></div></div>
         <h3>Premios para volver</h3><div class="reward-row"><div><svg><use href="assets/obeda-items.svg#shulker"/></svg><b>Diaria</b><span>Cada día</span></div><div><svg><use href="assets/obeda-items.svg#shulker"/></svg><b>Semanal</b><span>Cada 7 días</span></div><div><svg><use href="assets/obeda-items.svg#shulker"/></svg><b>Mensual</b><span>Cada 30 días</span></div></div><p>Abre <code>/recompensas</code>, <code>/daily</code>, <code>/reward</code> o <code>/rewards</code> para ver el premio de tu rango y cuándo estará disponible. También puedes participar en juegos de chat con <code>/chatgames</code>.</p>
       </section>
       <section id="comandos" class="chapter">

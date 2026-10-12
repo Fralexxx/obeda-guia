@@ -61,6 +61,39 @@
     line.innerHTML = `<b>EderusPets</b><span>${effect}</span>`;
   });
 
+  // Primero muestra lo esencial; cada jugador abre solo las propuestas que le interesan.
+  roster?.querySelectorAll('.candidate-card').forEach((card, index) => {
+    const list = card.querySelector('.benefit-list');
+    const minister = card.querySelector('.minister-profile');
+    if (!list || !minister) return;
+    const pitch = card.querySelector('.candidate-pitch');
+    if (!pitch) {
+      const summary = document.createElement('p');
+      summary.className = 'candidate-summary';
+      summary.textContent = list.querySelector('li span')?.textContent || 'Conoce su plan de gobierno.';
+      card.querySelector('.candidate-identity')?.after(summary);
+    }
+    const details = document.createElement('div');
+    details.className = 'candidate-details';
+    details.id = 'plan-alcalde-' + index;
+    details.hidden = true;
+    for (const node of [card.querySelector('.proposal-label'), list, minister]) {
+      if (node) details.append(node);
+    }
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'candidate-toggle';
+    button.setAttribute('aria-controls', details.id);
+    button.setAttribute('aria-expanded', 'false');
+    button.textContent = 'Ver propuesta y ventajas';
+    button.addEventListener('click', () => {
+      details.hidden = !details.hidden;
+      button.setAttribute('aria-expanded', String(!details.hidden));
+      button.textContent = details.hidden ? 'Ver propuesta y ventajas' : 'Ocultar propuesta';
+    });
+    card.append(button, details);
+  });
+
   // Si el servicio de modelos 3D falla, muestra la cara de la textura real
   // configurada en candidatos.yml para que la ficha nunca quede vacía.
   document.querySelectorAll(".skin-render[data-skin-hash]").forEach(image => {
